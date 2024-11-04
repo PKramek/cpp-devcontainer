@@ -1,32 +1,41 @@
-# Prerequisites
-*.d
+# Build directories
+build/
+/build*/
+out/
+cmake-build-*/
 
-# Compiled Object files
-*.slo
-*.lo
+# IDE specific files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Compiled files
 *.o
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
+*.exe
+*.dll
 *.so
 *.dylib
-*.dll
 
-# Fortran module files
-*.mod
-*.smod
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+Testing/
+DartConfiguration.tcl
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
 
-# Executables
-*.exe
-*.out
-*.app
+# Cache and temporary files
+.cache/
+.DS_Store
+*.swp
+*~

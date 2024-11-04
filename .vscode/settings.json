@@ -19,5 +19,8 @@
             }
         }
     },
-    "cmake.launchTarget": "main_app"
+    "cmake.launchTarget": "main_app",
+    "cmake.buildBeforeRun": true,
+    "cmake.defaultLaunchTarget": "main_app",
+    "cmake.saveBeforeBuild": true
 }

@@ -20,11 +20,11 @@ FetchContent_MakeAvailable(googletest)
 
 # Set source files explicitly
 set(CALCULATOR_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/calculator.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/calculator.cpp
 )
 
 set(CALCULATOR_HEADERS
-    ${CMAKE_CURRENT_SOURCE_DIR}/calculator.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/calculator.hpp
 )
 
 # Create calculator library
@@ -36,7 +36,7 @@ add_library(calculator STATIC
 # Set include directories
 target_include_directories(calculator
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 # Add main executable
@@ -46,16 +46,24 @@ add_executable(main_app
 target_link_libraries(main_app 
     PUBLIC calculator
 )
+target_include_directories(main_app
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
 
 # Add test executable
 add_executable(calculator_tests 
-    ${CMAKE_CURRENT_SOURCE_DIR}/calculator_test.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/calculator_test.cpp
 )
 target_link_libraries(calculator_tests
     PRIVATE
     GTest::gtest
     GTest::gtest_main
     calculator
+)
+target_include_directories(calculator_tests
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 # Enable testing and add tests

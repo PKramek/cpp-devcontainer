@@ -18,19 +18,39 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# Create calculator library
-add_library(calculator 
-    calculator.cpp
-    calculator.hpp
+# Set source files explicitly
+set(CALCULATOR_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/calculator.cpp
 )
-target_include_directories(calculator PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+set(CALCULATOR_HEADERS
+    ${CMAKE_CURRENT_SOURCE_DIR}/calculator.hpp
+)
+
+# Create calculator library
+add_library(calculator STATIC
+    ${CALCULATOR_SOURCES}
+    ${CALCULATOR_HEADERS}
+)
+
+# Set include directories
+target_include_directories(calculator
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 # Add main executable
-add_executable(main_app main.cpp)
-target_link_libraries(main_app PRIVATE calculator)
+add_executable(main_app 
+    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+)
+target_link_libraries(main_app 
+    PUBLIC calculator
+)
 
 # Add test executable
-add_executable(calculator_tests calculator_test.cpp)
+add_executable(calculator_tests 
+    ${CMAKE_CURRENT_SOURCE_DIR}/calculator_test.cpp
+)
 target_link_libraries(calculator_tests
     PRIVATE
     GTest::gtest

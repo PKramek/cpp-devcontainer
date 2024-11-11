@@ -1,6 +1,6 @@
 {
     "cmake.debugConfig": {
-        "stopAtEntry": false,
+        "stopAtEntry": true,
         "MIMode": "gdb",
         "miDebuggerPath": "/usr/bin/gdb"
     },
@@ -22,5 +22,6 @@
     "cmake.launchTarget": "main_app",
     "cmake.buildBeforeRun": true,
     "cmake.defaultLaunchTarget": "main_app",
-    "cmake.saveBeforeBuild": true
+    "cmake.saveBeforeBuild": true,
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }

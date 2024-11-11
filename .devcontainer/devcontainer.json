@@ -3,10 +3,6 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "features": {
-        "ghcr.io/devcontainers/features/cmake:1": {},
-        "ghcr.io/jungaretti/features/make:1": {}
-    },
     "customizations": {
         "vscode": {
             "extensions": [
